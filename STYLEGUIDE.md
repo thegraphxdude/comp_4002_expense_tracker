@@ -5,6 +5,4 @@ The color palette of the application will include:
 - Bayside with hex value of #27B0F5
 
 The fonts that will be used in the application will include:
-- Georgia with font size of 20
-- Sans-serif with font size of 20
-- Tahoma with font size of 20
+- Georgia with font sizes of 16, 24, 32
