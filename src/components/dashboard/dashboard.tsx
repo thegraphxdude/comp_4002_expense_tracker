@@ -38,6 +38,7 @@ function Dashboard() {
     const balance = totalIncome - totalExpenses;
 
     return (
+        <div className="dashboard-container">
         <section className="dashboard">
             <div className="title">
                 <h1>Financial Dashboard</h1>
@@ -82,6 +83,7 @@ function Dashboard() {
                 </ul>
             </div>
         </section>
+        </div>
     );
 };
 
