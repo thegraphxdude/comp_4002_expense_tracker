@@ -1,0 +1,11 @@
+h1 {
+    font-size: 32px;
+}
+
+header {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    top: 0;
+    width: 100%;
+}
