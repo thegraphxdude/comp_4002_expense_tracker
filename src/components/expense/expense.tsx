@@ -1,4 +1,3 @@
-import React from "react";
 import "./expense.css"
 import "../../App.css"
 
@@ -24,7 +23,7 @@ export function Expenses() {
 
                 <ul>{sampleExpenses.map((expense, index) => (
                     <li key={index}>
-                        {expense.name}: ${expense.amount.tofixed(2)}
+                        {expense.name}: ${expense.amount.toFixed(2)}
                     </li>
                 ))}
                 </ul>
