@@ -1,14 +1,15 @@
 import './App.css'
-import Header from "./components/landing/header/header";
-import Footer from "./components/landing/footer/footer";
 import Dashboard from './components/dashboard/dashboard';
+import Income from './components/income';
+import { Layout } from './components/layout/Layout';
 
 function App() {
   return (
     <>
-      <Header/>
-      <Dashboard/>
-      <Footer/>
+      <Layout title='vite-project'>
+        <Dashboard/>
+        <Income/>
+      </Layout>
     </>
   )
 };
