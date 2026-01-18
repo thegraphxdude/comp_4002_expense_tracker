@@ -1,0 +1,25 @@
+:root {
+    --dark-blue: #001936;
+    --gray: #576779;
+    --green: #507a40;
+    --white: #FFFFFF;
+}
+
+.expense h1 {
+    text-align: center;
+    color: #001936;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 34px;
+}
+
+.expense ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.expense li {
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+}
