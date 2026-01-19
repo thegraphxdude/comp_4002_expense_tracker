@@ -5,6 +5,20 @@
     --white: #FFFFFF;
 }
 
+.expense-container {
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+    margin: 50px;
+}
+.expense {
+    background-color: #f4f4f4;
+    color: var(--dark-blue);
+    max-width: 1000px;
+    width: 100%;
+    padding: 40px;
+}
+
 .expense h1 {
     text-align: center;
     color: #001936;

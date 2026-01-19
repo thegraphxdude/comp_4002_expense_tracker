@@ -13,8 +13,23 @@ body {
     color: var(--gray)
 }
 
+.income-container {
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+    margin: 50px;
+}
+.income-display {
+    background-color: #f4f4f4;
+    color: var(--dark-blue);
+    max-width: 1000px;
+    width: 100%;
+    padding: 40px;
+    text-align: center;
+}
+
 #title {
-    color: #9fc490;
+    color: var(--dark-blue);
     font-size: 64px;
 }
 

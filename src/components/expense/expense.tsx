@@ -16,17 +16,18 @@ const sampleExpenses: Expenses[] = [
 
 export function Expenses() {
     return (
-            <section className="expense">
+        <section className="expense-container">
+            <div className="expense">
                 <h1 id="title">
                     Expenses
                 </h1>
-
                 <ul>{sampleExpenses.map((expense, index) => (
                     <li key={index}>
                         {expense.name}: ${expense.amount.toFixed(2)}
                     </li>
                 ))}
                 </ul>
-            </section>
+            </div>
+        </section>
     );
 }  

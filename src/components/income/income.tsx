@@ -1,6 +1,6 @@
-import "../App.css"
+import "../../App.css"
 import "./income.css"
-import reactLogo from "../assets/react.svg"
+import "../../assets/react.svg"
 
 interface Paycheque {
     employerName: string,
@@ -29,38 +29,40 @@ const samplePaycheques: Paycheque[] = [
 function Income() {
     return (
         <>
-            <section className="income">
-                <h1 id="title">
-                    Income
-                </h1>
-                <img src={reactLogo} alt="react logo" className="logo" />
-                <br />
-                <select id='income-month' aria-label="Income Month">
-                    <option selected value='1'>January</option>
-                    <option value='2'>February</option>
-                    <option value='3'>March</option>
-                    <option value='4'>April</option>
-                    <option value='5'>May</option>
-                    <option value='6'>June</option>
-                    <option value='7'>July</option>
-                    <option value='8'>August</option>
-                    <option value='9'>September</option>
-                    <option value='10'>October</option>
-                    <option value='11'>November</option>
-                    <option value='12'>December</option>
-                </select>
-                <div id="salary-overview">
-                    {samplePaycheques.map((paycheque => {
-                        return(
-                            <div>
-                                <p>{paycheque.employerName}: ${paycheque.totalEarned} {!paycheque.hourlyRate ? '' : "@ $" + paycheque.hourlyRate + "/hr"}</p>
-                                <p>${paycheque.plusMinus >= 0 ? paycheque.plusMinus + " more" : -paycheque.plusMinus + " less"} than last month</p>
-                                <p>${paycheque.average} average in the past 12 months</p>
-                            </div>
-                        )
-                    }))}
-                </div>
-            </section>
+            <div className="income-container">
+                <section className="income-display">
+                    <h1 id="title">
+                        Income
+                    </h1>
+                    <img src="react.svg" alt="placeholder image" className="logo" />
+                    <br />
+                    <select id='income-month' aria-label="Income Month">
+                        <option selected value='1'>January</option>
+                        <option value='2'>February</option>
+                        <option value='3'>March</option>
+                        <option value='4'>April</option>
+                        <option value='5'>May</option>
+                        <option value='6'>June</option>
+                        <option value='7'>July</option>
+                        <option value='8'>August</option>
+                        <option value='9'>September</option>
+                        <option value='10'>October</option>
+                        <option value='11'>November</option>
+                        <option value='12'>December</option>
+                    </select>
+                    <div id="salary-overview">
+                        {samplePaycheques.map((paycheque => {
+                            return (
+                                <div>
+                                    <p>{paycheque.employerName}: ${paycheque.totalEarned} {!paycheque.hourlyRate ? '' : "@ $" + paycheque.hourlyRate + "/hr"}</p>
+                                    <p>${paycheque.plusMinus >= 0 ? paycheque.plusMinus + " more" : -paycheque.plusMinus + " less"} than last month</p>
+                                    <p>${paycheque.average} average in the past 12 months</p>
+                                </div>
+                            )
+                        }))}
+                    </div>
+                </section>
+            </div>
         </>
     )
 }
