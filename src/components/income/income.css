@@ -29,7 +29,7 @@ body {
 }
 
 #title {
-    color: #9fc490;
+    color: var(--dark-blue);
     font-size: 64px;
 }
 
