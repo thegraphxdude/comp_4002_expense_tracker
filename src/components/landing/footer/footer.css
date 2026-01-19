@@ -3,7 +3,7 @@ footer {
 }
 
 footer {
-    position: fixed;
+    position: static;
     display: flex;
     justify-content: center;
     bottom: 0;
