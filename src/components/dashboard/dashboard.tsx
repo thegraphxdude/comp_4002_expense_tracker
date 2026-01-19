@@ -64,7 +64,7 @@ function Dashboard() {
                         //Checks if the transaction is negative or positive
                         const sign = transaction.type === 'income' ? "+": "-";
                         return(
-                        <li key={transaction.id} className={`transaction-item ${transaction.type}`}>
+                        <li key={transaction.id} className={`transaction-item ${transaction.type}s`}>
                             <div className="transaction-info">
                                 <h3>{transaction.description}</h3>
                                 <span className="transaction-category">{transaction.category}</span>

@@ -78,10 +78,10 @@ ul {
   border-left: 4px solid transparent;
 }
 
-.transaction-item.expense {
+.transaction-item.expenses {
     border-left-color: var(--gray);
 }
 
-.transaction-item.income {
+.transaction-item.incomes {
     border-left-color: var(--dark-blue);
 }
