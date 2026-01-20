@@ -29,8 +29,8 @@ const samplePaycheques: Paycheque[] = [
 function Income() {
     return (
         <>
-            <div className="income-container">
-                <section className="income-display">
+            <div className="content-container">
+                <section className="content">
                     <h1 id="title">
                         Income
                     </h1>

@@ -1,28 +1,3 @@
-:root {
-    --dark-blue: #001936;
-    --gray: #576779;
-    --green: #507a40;
-    --white: #FFFFFF;
-}
-
-.dashboard-container {
-    display: flex;
-    justify-content: center;
-    padding: 30px;
-    margin: 50px;
-}
-.dashboard {
-    background-color: #f4f4f4;
-    color: var(--dark-blue);
-    max-width: 1000px;
-    width: 100%;
-    padding: 40px;
-}
-.title{
-    text-align: center;
-    width: 100%;
-}
-
 .dashboard p {
     font-style: italic;
 }
@@ -57,25 +32,8 @@
     margin-bottom: 3rem;
 }
 
-.transactions h2 {
-    display: flex;
-    justify-content: center;
-    width: 100%; 
-}
-
 ul {
     list-style-type: none;
-}
-
-.transaction-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem;
-  margin-bottom: 0.75rem;
-  background-color: var(--white);
-  border-radius: 8px;
-  border-left: 4px solid transparent;
 }
 
 .transaction-item.expenses {
