@@ -16,8 +16,8 @@ const sampleExpenses: Expenses[] = [
 
 export function Expenses() {
     return (
-        <section className="expense-container">
-            <div className="expense">
+        <section className="content-container">
+            <div className="content">
                 <h1 id="title">
                     Expenses
                 </h1>
