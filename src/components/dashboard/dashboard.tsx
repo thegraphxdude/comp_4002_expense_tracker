@@ -1,4 +1,5 @@
 import "./dashboard.css";
+import BudgetTracker from "./budget-tracker";
 
 interface Transaction {
   id: string;
@@ -82,6 +83,7 @@ function Dashboard() {
                     }))}
                 </ul>
             </div>
+            <BudgetTracker/>
         </section>
         </div>
     );
