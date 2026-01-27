@@ -1,16 +1,8 @@
-import { useState } from "react";
+import type { BudgetGoals } from "../../../src/types/budgetGoals";
 
-interface BudgetGoals {
-    monthlySpendingLimit: number;
-    monthlySavingGoal: number
-}
+function BudgetTracker({budgetGoals, setBudgetGoals}: 
+    {budgetGoals: BudgetGoals, setBudgetGoals: React.Dispatch<React.SetStateAction<BudgetGoals>>}){
 
-function BudgetTracker(){
-
-    const [budgetGoals, setBudgetGoals] = useState<BudgetGoals>({
-        monthlySpendingLimit: 0,
-        monthlySavingGoal: 0,
-    })
     return(
         
         <div className='form-container'>

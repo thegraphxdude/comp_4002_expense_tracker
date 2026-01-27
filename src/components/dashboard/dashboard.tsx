@@ -1,5 +1,7 @@
 import "./dashboard.css";
 import BudgetTracker from "./budget-tracker";
+import { useState } from "react";
+import type { BudgetGoals } from "../../../src/types/budgetGoals";
 
 interface Transaction {
   id: string;
@@ -19,7 +21,10 @@ const testTransactions: Transaction[] = [
 ];
 
 function Dashboard() {
-
+    const [budgetGoals, setBudgetGoals] = useState<BudgetGoals>({
+        monthlySpendingLimit: 0,
+        monthlySavingGoal: 0,
+    })
     let totalIncome = 0;
 
     testTransactions.forEach(transaction => {
@@ -83,7 +88,10 @@ function Dashboard() {
                     }))}
                 </ul>
             </div>
-            <BudgetTracker/>
+            <BudgetTracker
+            budgetGoals = {budgetGoals}
+            setBudgetGoals = {setBudgetGoals}
+        />
         </section>
         </div>
     );
