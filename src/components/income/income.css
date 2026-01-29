@@ -1,2 +1,27 @@
+#graph {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    text-align: center;
+}
 
+#bar {
+    background-color: var(--dark-blue);
+    width: 100px;
+    height: 400px;
+    border-radius: 10px;
+}
 
+#income-month-container{
+    display: flex;
+    justify-content: center;
+}
+
+#salary-overview {
+    display: flex;
+    flex-direction: column;
+}
+
+.transaction-item.incomes span {
+    width: 30%;
+}
