@@ -30,11 +30,10 @@ body {
     font-family: inherit;
     font-size: inherit;
     border: 0px;
-    margin-bottom: 1em;
-}
-
-#salary-overview > div {
-    padding: 1em;
+    margin: 1em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    min-width: 50px;
 }
 
 /* from dashboard */

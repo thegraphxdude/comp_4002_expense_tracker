@@ -57,9 +57,8 @@ function Income() {
               )
             })}
           </div>
-          <br />
           <div id="income-month-container">
-            <select className='income-month' aria-label="Income Month">
+            <select id="income-month" className='income-month' aria-label="Income Month">
               {months.map((month) => {
                 const monthIndex: number = months.indexOf(month);
                 return (
@@ -67,6 +66,7 @@ function Income() {
                 )
               })}
             </select>
+            <button className="income-month">+</button>
           </div>
           <div id="salary-overview">
             {samplePaycheques.map((paycheque => {
