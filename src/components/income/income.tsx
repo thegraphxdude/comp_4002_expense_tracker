@@ -3,68 +3,93 @@ import "./income.css"
 import "../../assets/react.svg"
 
 interface Paycheque {
-    employerName: string,
-    totalEarned: number,
-    hourlyRate?: number
-    plusMinus: number,
-    average: number
+  employerName: string,
+  totalEarned: number,
+  hourlyRate?: number
+  plusMinus: number,
+  average: number
 };
 
 const samplePaycheques: Paycheque[] = [
-    {
-        employerName: "Unity Technologies",
-        totalEarned: 600,
-        hourlyRate: 3,
-        plusMinus: -220,
-        average: 422.45
-    },
-    {
-        employerName: "343 Industries",
-        totalEarned: 500,
-        plusMinus: 120,
-        average: 300
-    }
+  {
+    employerName: "Unity Technologies",
+    totalEarned: 600,
+    hourlyRate: 3,
+    plusMinus: -220,
+    average: 422.45
+  },
+  {
+    employerName: "343 Industries",
+    totalEarned: 500,
+    plusMinus: 120,
+    average: 300
+  }
+];
+
+const months: string[] = [
+  "January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+];
+
+const pastFiveMonths: string[] = [
+  months[(new Date().getMonth() + 8) % 12],
+  months[(new Date().getMonth() + 9) % 12],
+  months[(new Date().getMonth() + 10) % 12],
+  months[(new Date().getMonth() + 11) % 12],
+  months[new Date().getMonth()]
 ];
 
 function Income() {
-    return (
-        <>
-            <div className="content-container">
-                <section className="content">
-                    <h1 id="title">
-                        Income
-                    </h1>
-                    <img src="react.svg" alt="placeholder image" className="logo" />
-                    <br />
-                    <select id='income-month' aria-label="Income Month">
-                        <option selected value='1'>January</option>
-                        <option value='2'>February</option>
-                        <option value='3'>March</option>
-                        <option value='4'>April</option>
-                        <option value='5'>May</option>
-                        <option value='6'>June</option>
-                        <option value='7'>July</option>
-                        <option value='8'>August</option>
-                        <option value='9'>September</option>
-                        <option value='10'>October</option>
-                        <option value='11'>November</option>
-                        <option value='12'>December</option>
-                    </select>
-                    <div id="salary-overview">
-                        {samplePaycheques.map((paycheque => {
-                            return (
-                                <div>
-                                    <p>{paycheque.employerName}: ${paycheque.totalEarned} {!paycheque.hourlyRate ? '' : "@ $" + paycheque.hourlyRate + "/hr"}</p>
-                                    <p>${paycheque.plusMinus >= 0 ? paycheque.plusMinus + " more" : -paycheque.plusMinus + " less"} than last month</p>
-                                    <p>${paycheque.average} average in the past 12 months</p>
-                                </div>
-                            )
-                        }))}
-                    </div>
-                </section>
-            </div>
-        </>
-    )
+  return (
+    <>
+      <div className="content-container">
+        <section className="content">
+          <h1 id="title">
+            Income
+          </h1>
+          <div id="graph">
+            {pastFiveMonths.map((month) => {
+              return (
+                <div id="graph-slice">
+                  <div id="bar"></div>
+                  <p>{month.slice(0, 3)}</p>
+                </div>
+              )
+            })}
+          </div>
+          <br />
+          <div id="income-month-container">
+            <select id='income-month' aria-label="Income Month">
+              {months.map((month) => {
+                const monthIndex: number = months.indexOf(month);
+                return (
+                  <option selected={monthIndex === new Date().getMonth() ? true : false} value={monthIndex}>{month}</option>
+                )
+              })}
+            </select>
+          </div>
+          <div id="salary-overview">
+            {samplePaycheques.map((paycheque => {
+              return (
+                <div className="transaction-item incomes">
+                  <span>
+                    <h3>{paycheque.employerName}</h3>
+                    <p>${paycheque.totalEarned} {!paycheque.hourlyRate ? '' : "@ $" + paycheque.hourlyRate + "/hr"}</p>
+                  </span>
+                  <span>
+                    <p>${paycheque.plusMinus >= 0 ? paycheque.plusMinus + " more" : -paycheque.plusMinus + " less"} than last month</p>
+                  </span>
+                  <span>
+                    <p>${paycheque.average} average in the past 12 months</p>
+                  </span>          
+                </div>
+              )
+            }))}
+          </div>
+        </section>
+      </div>
+    </>
+  )
 }
 
 export default Income
