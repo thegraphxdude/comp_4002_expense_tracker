@@ -21,7 +21,7 @@ body {
     text-align: center;
 }
 
-#income-month {
+.income-month {
     padding: 10px;
     align-content: center;
     background-color: var(--gray);
