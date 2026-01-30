@@ -1,0 +1,14 @@
+.input-field {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+h1{
+    text-align: center;
+}
+
+.form-container {
+    background-color: white;
+    padding-top: 20px;
+}

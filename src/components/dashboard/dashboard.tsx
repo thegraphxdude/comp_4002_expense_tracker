@@ -1,4 +1,7 @@
 import "./dashboard.css";
+import BudgetTracker from "./budget-tracker";
+import { useState } from "react";
+import type { BudgetGoals } from "../../../src/types/budgetGoals";
 
 interface Transaction {
   id: string;
@@ -18,7 +21,10 @@ const testTransactions: Transaction[] = [
 ];
 
 function Dashboard() {
-
+    const [budgetGoals, setBudgetGoals] = useState<BudgetGoals>({
+        monthlySpendingLimit: 0,
+        monthlySavingGoal: 0,
+    })
     let totalIncome = 0;
 
     testTransactions.forEach(transaction => {
@@ -36,6 +42,14 @@ function Dashboard() {
     });
   
     const balance = totalIncome - totalExpenses;
+
+    const remainingBalance = budgetGoals.monthlySpendingLimit - totalExpenses;
+
+    const currentSavings = totalIncome - totalExpenses;
+
+    const savingProgress = budgetGoals.monthlySavingGoal > 0 
+    ? (currentSavings / budgetGoals.monthlySavingGoal) * 100
+    : 0;
 
     return (
         <div className="content-container">
@@ -81,6 +95,26 @@ function Dashboard() {
                         )
                     }))}
                 </ul>
+            </div>
+                <BudgetTracker
+                budgetGoals = {budgetGoals}
+                setBudgetGoals = {setBudgetGoals}
+                />
+            <div>
+            </div>
+            <div className="summary-cards">
+                <div className="remaining-balance">
+                    <h2>Remaining Spending Balance</h2>
+                    <p> ${remainingBalance.toFixed(2)}</p>
+                </div>
+                <div className="current-savings">
+                    <h2>Current Savings</h2>
+                    <p> ${currentSavings.toFixed(2)}</p>
+                </div>
+                <div className="savings-progress">
+                    <h2>Savings Progress</h2>
+                    <p> {savingProgress}%</p>
+                </div>
             </div>
         </section>
         </div>
