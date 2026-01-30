@@ -43,6 +43,14 @@ function Dashboard() {
   
     const balance = totalIncome - totalExpenses;
 
+    const remainingBalance = budgetGoals.monthlySpendingLimit - totalExpenses;
+
+    const currentSavings = totalIncome - totalExpenses;
+
+    const savingProgress = budgetGoals.monthlySavingGoal > 0 
+    ? (currentSavings / budgetGoals.monthlySavingGoal) * 100
+    : 0;
+
     return (
         <div className="content-container">
         <section className="content">
@@ -88,10 +96,27 @@ function Dashboard() {
                     }))}
                 </ul>
             </div>
-            <BudgetTracker
-            budgetGoals = {budgetGoals}
-            setBudgetGoals = {setBudgetGoals}
-        />
+                <h1 id="title">Budget Tracker</h1>
+                <BudgetTracker
+                budgetGoals = {budgetGoals}
+                setBudgetGoals = {setBudgetGoals}
+                />
+            <div>
+            </div>
+            <div className="summary-cards">
+                <div className="remaining-balance">
+                    <h2>Remaining Spending Balance</h2>
+                    <p> ${remainingBalance.toFixed(2)}</p>
+                </div>
+                <div className="current-savings">
+                    <h2>Current Savings</h2>
+                    <p> ${currentSavings.toFixed(2)}</p>
+                </div>
+                <div className="savings-progress">
+                    <h2>Savings Progress</h2>
+                    <p> {savingProgress}%</p>
+                </div>
+            </div>
         </section>
         </div>
     );

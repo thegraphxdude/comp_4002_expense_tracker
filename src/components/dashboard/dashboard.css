@@ -2,14 +2,14 @@
     font-style: italic;
 }
 
-.total-income {
+.total-income, .remaining-balance {
     padding: 2rem;
     border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     background-color: var(--dark-blue);
     color: var(--white);
 }
-.total-expenses {
+.total-expenses, .current-savings{
     background-color: var(--gray);
     color: var(--white);
     padding: 2rem;
@@ -17,7 +17,7 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.balance {
+.balance, .savings-progress {
     background-color: var(--green);
     color: var(--white);
     padding: 2rem;
