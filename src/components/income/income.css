@@ -28,6 +28,7 @@
             #ffffff00 2px,
             #ffffff00 199px);
     width: 100%;
+    align-items: flex-end;
 }
 
 #bar {
