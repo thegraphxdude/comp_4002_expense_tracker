@@ -124,7 +124,6 @@ function Income() {
   }
 
   let topEarningMonthOnGraph: Month = months[selectedMonthIndex]
-  const mostMonthlyEarnings: number = getMonthlyTotal(topEarningMonthOnGraph);
 
   for (let index = 0; index < pastFiveMonths.length; index++) {
     const month = pastFiveMonths[index];
@@ -132,6 +131,8 @@ function Income() {
         topEarningMonthOnGraph = month;
       }
   }
+  
+  const mostMonthlyEarnings: number = getMonthlyTotal(topEarningMonthOnGraph);
 
   return (
     <>
