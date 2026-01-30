@@ -2,9 +2,10 @@ import "./dashboard.css";
 import BudgetTracker from "./budget-tracker";
 import { useState } from "react";
 import type { BudgetGoals } from "../../../src/types/budgetGoals";
+import type { FormEvent } from "react"
 
 interface Transaction {
-  id: string;
+  id: number;
   type: 'income' | 'expense';
   amount: number;
   category: string;
@@ -13,18 +14,59 @@ interface Transaction {
 };
 
 const testTransactions: Transaction[] = [
-    { id: '1', type: 'income', amount: 3000, category: 'Salary', description: 'Monthly salary', date: '2026-01-01' },
-    { id: '2', type: 'expense', amount: 1200, category: 'Rent', description: 'January rent', date: '2026-01-05' },
-    { id: '3', type: 'expense', amount: 150, category: 'Groceries', description: 'Weekly groceries', date: '2026-01-07' },
-    { id: '4', type: 'income', amount: 500, category: 'Freelance', description: 'Web design project', date: '2026-01-10' },
-    { id: '5', type: 'expense', amount: 80, category: 'Utilities', description: 'Electric bill', date: '2026-01-12' },
+    { id: 1, type: 'income', amount: 3000, category: 'Salary', description: 'Monthly salary', date: '2026-01-01' },
+    { id: 2, type: 'expense', amount: 1200, category: 'Rent', description: 'January rent', date: '2026-01-05' },
+    { id: 3, type: 'expense', amount: 150, category: 'Groceries', description: 'Weekly groceries', date: '2026-01-07' },
+    { id: 4, type: 'income', amount: 500, category: 'Freelance', description: 'Web design project', date: '2026-01-10' },
+    { id: 5, type: 'expense', amount: 80, category: 'Utilities', description: 'Electric bill', date: '2026-01-12' },
 ];
+
+
+
 
 function Dashboard() {
     const [budgetGoals, setBudgetGoals] = useState<BudgetGoals>({
         monthlySpendingLimit: 0,
         monthlySavingGoal: 0,
     })
+
+    const [transactions, setTransactions] = useState(testTransactions);
+    const [newTransaction, setNewTransaction] = useState({
+        description: '',
+        category: '',
+        amount: '',
+        type: 'income' ,
+        date: ''
+    });
+
+    const initialNextId = Math.max(...transactions.map(t => t.id)) + 1 
+    const [nextId, setNextId] = useState(initialNextId);
+
+    const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+  
+    const transaction: Transaction = {
+        ...newTransaction,
+        id: nextId,
+        amount: parseFloat(newTransaction.amount),
+        type: newTransaction.type as 'income' | 'expense'
+    }
+
+    setTransactions([...transactions, transaction])
+    setNextId(nextId + 1)
+    setNewTransaction({
+        description: '',
+        category: '',
+        amount: '',
+        type: 'income',
+        date: ''
+    });
+}
+
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+        setNewTransaction({...newTransaction, [event.target.name]: event.target.value})
+    }
+
     let totalIncome = 0;
 
     testTransactions.forEach(transaction => {
@@ -74,7 +116,7 @@ function Dashboard() {
             <div className="transactions">
                 <h2> Recent Transactions</h2>
                 <ul className="transaction-list">
-                    {testTransactions.map((transaction => {
+                    {transactions.map((transaction => {
                         //Checks if the transaction is negative or positive
                         const sign = transaction.type === 'income' ? "+": "-";
                         return(
@@ -95,6 +137,36 @@ function Dashboard() {
                         )
                     }))}
                 </ul>
+            </div>
+            <div className="transaction-form">
+                <form onSubmit={handleSubmit}>
+                    <div>
+                       <label>Description</label>
+                       <input name= "description" type="text" value={newTransaction.description} onChange={handleChange}></input> 
+                    </div>
+                    <div>
+                       <label>Category</label>
+                       <input type="text" name= "category" value={newTransaction.category} onChange={handleChange}></input> 
+                    </div>
+                    <div>
+                       <label>Amount</label>
+                       <input type="text" name= "amount" value={newTransaction.amount} onChange={handleChange}></input> 
+                    </div>
+                    <div>
+                        <label>Income or Expense</label>
+                        <select name="type" value={newTransaction.type} onChange={handleChange}>
+                            <option value="income">Income</option>
+                            <option value="expense">Expense</option>
+                        </select>
+                    </div>
+                    <div>
+                       <label>Date</label>
+                       <input type="date" name= "date" value={newTransaction.date} onChange={handleChange}></input> 
+                    </div>
+                    <div className='button-container'>
+                    <button type='submit'>Submit</button>
+                    </div>
+                </form>
             </div>
                 <BudgetTracker
                 budgetGoals = {budgetGoals}
