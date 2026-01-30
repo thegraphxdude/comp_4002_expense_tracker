@@ -44,18 +44,24 @@ function Income() {
     <>
       <div className="content-container">
         <section className="content">
-          <h1 id="title">
-            Income
-          </h1>
-          <div id="graph">
-            {pastFiveMonths.map((month) => {
-              return (
-                <div id="graph-slice">
-                  <div id="bar"></div>
-                  <p>{month.slice(0, 3)}</p>
-                </div>
-              )
-            })}
+          <h1 id="title">Income</h1>
+          <h2>Past 5 Months</h2>
+          <div id="graph-container">
+            <div id="graph-side-label">
+              <p>$400</p>
+              <p>$200</p>
+              <p>$0</p>
+            </div>
+            <div id="graph">
+              {pastFiveMonths.map((month) => {
+                return (
+                  <div id="graph-slice">
+                    <div id="bar"></div>
+                    <p>{month.slice(0, 3)}</p>
+                  </div>
+                )
+              })}
+            </div>
           </div>
           <div id="income-month-container">
             <select id="income-month" className='income-month' aria-label="Income Month">
@@ -81,7 +87,7 @@ function Income() {
                   </span>
                   <span>
                     <p>${paycheque.average} average in the past 12 months</p>
-                  </span>          
+                  </span>
                 </div>
               )
             }))}

@@ -1,18 +1,44 @@
+#graph-container {
+    display: flex;
+    flex-direction: row;
+}
+
+#graph-side-label {
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    translate: 0px, -100px;
+    margin-bottom: 2.2em;
+}
+
+#graph-side-label p {
+    margin-top: 0em;
+
+}
+
 #graph {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     text-align: center;
+    background: repeating-linear-gradient(
+            var(--gray),
+            var(--gray) 2px,
+            #ffffff00 2px,
+            #ffffff00 199px);
+    width: 100%;
 }
 
 #bar {
     background-color: var(--dark-blue);
     width: 100px;
     height: 400px;
-    border-radius: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
-#income-month-container{
+#income-month-container {
     display: flex;
     justify-content: center;
 }
@@ -24,4 +50,10 @@
 
 .transaction-item.incomes span {
     width: 30%;
+}
+
+h2 {
+    display: flex;
+    justify-content: center;
+    width: 100%; 
 }
