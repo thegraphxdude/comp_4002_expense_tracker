@@ -74,7 +74,7 @@ function Dashboard() {
 
     let totalIncome = 0;
 
-    testTransactions.forEach(transaction => {
+    transactions.forEach(transaction => {
         if (transaction.type === 'income') {
             totalIncome += transaction.amount;
         }
@@ -82,7 +82,7 @@ function Dashboard() {
 
     let totalExpenses = 0;
 
-    testTransactions.forEach(transaction => {
+    transactions.forEach(transaction => {
         if (transaction.type === 'expense') {
             totalExpenses += transaction.amount;
         }
