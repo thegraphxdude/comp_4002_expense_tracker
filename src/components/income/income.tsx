@@ -14,103 +14,69 @@ interface Month {
   paycheques: Paycheque[]
 }
 
-const employers: string[] = ["Unity Technologies", "343 Industries"]
-
-const samplePaycheques: Paycheque[] = [
-  {
-    employerName: employers[0],
-    totalEarned: 600,
-    hourlyRate: 3,
-  },
-  {
-    employerName: employers[1],
-    totalEarned: 500,
-  }
-];
-
-const months: Month[] = [
-  { name: "January", paycheques: samplePaycheques },
-  {
-    name: "February", paycheques: [{
-      employerName: employers[1],
-      totalEarned: 500,
-    }]
-  },
-  {
-    name: "March", paycheques: [{
-      employerName: employers[1],
-      totalEarned: 500,
-    }]
-  },
-  {
-    name: "April", paycheques: [{
-      employerName: employers[1],
-      totalEarned: 400,
-    }]
-  },
-  {
-    name: "May", paycheques: [{
-      employerName: employers[1],
-      totalEarned: 500,
-    }]
-  },
-  {
-    name: "June", paycheques: [{
-      employerName: employers[1],
-      totalEarned: 500,
-    }]
-  },
-  {
-    name: "July", paycheques: [{
-      employerName: employers[1],
-      totalEarned: 500,
-    }]
-  },
-  {
-    name: "August", paycheques: [{
-      employerName: employers[1],
-      totalEarned: 500,
-    }]
-  },
-  {
-    name: "September", paycheques: [{
-      employerName: employers[1],
-      totalEarned: 500,
-    }]
-  },
-  {
-    name: "October", paycheques: [{
-      employerName: employers[1],
-      totalEarned: 500,
-    }]
-  },
-  {
-    name: "November", paycheques: [{
-      employerName: employers[1],
-      totalEarned: 500,
-    }]
-  },
-  {
-    name: "December", paycheques: [{
-      employerName: employers[1],
-      totalEarned: 600,
-    }]
-  }
-];
-
-const pastFiveMonths: Month[] = [
-  months[(new Date().getMonth() + 8) % 12],
-  months[(new Date().getMonth() + 9) % 12],
-  months[(new Date().getMonth() + 10) % 12],
-  months[(new Date().getMonth() + 11) % 12],
-  months[new Date().getMonth()]
-];
-
 function Income() {
+  const samplePaycheques: Paycheque[] = [
+    {
+      employerName: "Unity Technologies",
+      totalEarned: 600,
+      hourlyRate: 3,
+    }
+  ];
+  const otherSamplePaycheque: Paycheque = {
+    employerName: "BOB",
+    totalEarned: 600,
+    hourlyRate: 5
+  }
+
+  const [months, setMonths] = useState<Month[]>([
+    { name: "January", paycheques: [samplePaycheques[0], otherSamplePaycheque] },
+    { name: "February", paycheques: samplePaycheques },
+    { name: "March", paycheques: samplePaycheques },
+    { name: "April", paycheques: samplePaycheques },
+    { name: "May", paycheques: samplePaycheques },
+    { name: "June", paycheques: samplePaycheques },
+    { name: "July", paycheques: samplePaycheques },
+    { name: "August", paycheques: samplePaycheques },
+    { name: "September", paycheques: samplePaycheques },
+    { name: "October", paycheques: samplePaycheques },
+    { name: "November", paycheques: samplePaycheques },
+    { name: "December", paycheques: samplePaycheques }
+  ]);
+
+  const pastFiveMonths: Month[] = [
+    months[(new Date().getMonth() + 8) % 12],
+    months[(new Date().getMonth() + 9) % 12],
+    months[(new Date().getMonth() + 10) % 12],
+    months[(new Date().getMonth() + 11) % 12],
+    months[new Date().getMonth()]
+  ];
+
   const [selectedMonthIndex, setSelectedMonthIndex] = useState(new Date().getMonth())
+  const [isInputHidden, setIsInputHidden] = useState(false);
+
+  function handlePaychequeInput(e: React.FormEvent<HTMLFormElement>){
+    e.preventDefault()
+
+    const form = e.currentTarget
+    const formData = new FormData(form)
+    const formObject = Object.fromEntries(formData.entries())
+
+    const newMonths = [...months]
+    newMonths[selectedMonthIndex].paycheques.push({
+      employerName: formObject["employer-input"].toString(),
+      totalEarned: parseInt(formObject["total-pay-input"].toString()),
+      hourlyRate: parseInt(formObject["hourly-rate-input"].toString()),
+    })
+
+    setMonths(newMonths)
+  }
 
   function handleMonthChange(event: React.ChangeEvent<HTMLSelectElement>) {
     setSelectedMonthIndex(Number(event.target.value))
+  }
+
+  function toggleInputVisibility() {
+    setIsInputHidden(!isInputHidden)
   }
 
   function getMonthlyTotal(month: Month) {
@@ -125,13 +91,14 @@ function Income() {
 
   let topEarningMonthOnGraph: Month = months[selectedMonthIndex]
 
+
   for (let index = 0; index < pastFiveMonths.length; index++) {
     const month = pastFiveMonths[index];
-      if (getMonthlyTotal(month) > getMonthlyTotal(topEarningMonthOnGraph)){
-        topEarningMonthOnGraph = month;
-      }
+    if (getMonthlyTotal(month) > getMonthlyTotal(topEarningMonthOnGraph)) {
+      topEarningMonthOnGraph = month;
+    }
   }
-  
+
   const mostMonthlyEarnings: number = getMonthlyTotal(topEarningMonthOnGraph);
 
   return (
@@ -148,7 +115,7 @@ function Income() {
             </div>
             <div id="graph">
               {pastFiveMonths.map((month) => {
-                const barStyle = { height: (getMonthlyTotal(month) / mostMonthlyEarnings * 400).toString() + "px"}
+                const barStyle = { height: (getMonthlyTotal(month) / mostMonthlyEarnings * 400).toString() + "px" }
                 return (
                   <div id="graph-slice">
                     <div id="bar" style={barStyle}></div>
@@ -167,8 +134,19 @@ function Income() {
                 )
               })}
             </select>
-            <button className="income-month">+</button>
+            <button className="income-month" onClick={toggleInputVisibility}>{isInputHidden ? "-" : "+"}</button>
           </div>
+          {isInputHidden ? <div hidden={isInputHidden} id="paycheque-input">
+            <form onSubmit={handlePaychequeInput}>
+              <label htmlFor="employer-input">Employer Name:</label>
+              <input id="employer-input" className="income-month" type="text" />
+              <label htmlFor="total-pay-input">Total Earnings From Employer in {months[selectedMonthIndex].name}:</label>
+              <input id="total-pay-input" className="income-month" type="text" />
+              <label htmlFor="hourly-rate-input">Hourly Rate (Optional):</label>
+              <input id="hourly-rate-input" className="income-month" type="text" />
+              <input className="income-month" type="submit" value="Add to Paycheques"></input>
+            </form>
+          </div> : <></>}
           <div id="salary-overview">
             {months[selectedMonthIndex].paycheques.map((paycheque => {
               const lastPaycheque = months[(selectedMonthIndex + 11) % 12].paycheques.find((element) => element.employerName === paycheque.employerName)

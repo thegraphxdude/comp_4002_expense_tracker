@@ -14,7 +14,6 @@
 
 #graph-side-label p {
     margin-top: 0em;
-
 }
 
 #graph {
@@ -22,8 +21,7 @@
     flex-direction: row;
     justify-content: space-between;
     text-align: center;
-    background: repeating-linear-gradient(
-            var(--gray),
+    background: repeating-linear-gradient(var(--gray),
             var(--gray) 2px,
             #ffffff00 2px,
             #ffffff00 199px);
@@ -49,6 +47,32 @@
     flex-direction: column;
 }
 
+#paycheque-input {
+    display: flex;
+    justify-content: center;
+    background-color: var(--white);
+    padding-top: 1em;
+    margin-bottom: 1em;
+    border-radius: 8px;
+    border-left: 4px solid transparent;
+    border-left-color: var(--dark-blue);
+}
+
+#paycheque-input form {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    width: 60%;
+}
+
+#paycheque-input form label {
+    margin-left: 1.25em;
+}
+
+#paycheque-input form .income-month {
+    margin-top: 0.25em;
+}
+
 .transaction-item.incomes span {
     width: 30%;
 }
@@ -56,5 +80,5 @@
 h2 {
     display: flex;
     justify-content: center;
-    width: 100%; 
+    width: 100%;
 }
