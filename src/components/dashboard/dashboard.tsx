@@ -67,6 +67,11 @@ function Dashboard() {
         setNewTransaction({...newTransaction, [event.target.name]: event.target.value})
     }
 
+    const deleteTransaction = (id: number) => {
+        const updatedTransactions = transactions.filter(transaction => transaction.id != id);
+        setTransactions(updatedTransactions);
+    }
+
     let totalIncome = 0;
 
     testTransactions.forEach(transaction => {
@@ -132,6 +137,9 @@ function Dashboard() {
                             </div>
                             <div className="transaction-amount">
                                 {sign}${transaction.amount.toFixed(2)}
+                            </div>
+                            <div className="delete-button">
+                                <button onClick={()=>{deleteTransaction(transaction.id)}}>Delete</button>
                             </div>
                         </li>
                         )
