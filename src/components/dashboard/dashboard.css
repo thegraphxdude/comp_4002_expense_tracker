@@ -43,3 +43,32 @@ ul {
 .transaction-item.incomes {
     border-left-color: var(--dark-blue);
 }
+
+.transaction-input {
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+}
+
+.submit-button-container{
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+}
+
+button{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 24px;
+    background-color: #576779;
+    color: white;
+    border-radius: 5px;
+    padding: 10px
+}
+
+button:hover{
+    background-color: #001936;
+}
+
+label{
+    padding-right: 10px;
+}

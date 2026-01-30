@@ -148,30 +148,30 @@ function Dashboard() {
             </div>
             <div className="transaction-form">
                 <form onSubmit={handleSubmit}>
-                    <div>
+                    <div className='transaction-input'>
                        <label>Description</label>
                        <input name= "description" type="text" value={newTransaction.description} onChange={handleChange}></input> 
                     </div>
-                    <div>
+                    <div className='transaction-input'>
                        <label>Category</label>
                        <input type="text" name= "category" value={newTransaction.category} onChange={handleChange}></input> 
                     </div>
-                    <div>
+                    <div className='transaction-input'>
                        <label>Amount</label>
-                       <input type="text" name= "amount" value={newTransaction.amount} onChange={handleChange}></input> 
+                       <input type="number" name= "amount" value={newTransaction.amount} onChange={handleChange}></input> 
                     </div>
-                    <div>
+                    <div className='transaction-input'>
                         <label>Income or Expense</label>
                         <select name="type" value={newTransaction.type} onChange={handleChange}>
                             <option value="income">Income</option>
                             <option value="expense">Expense</option>
                         </select>
                     </div>
-                    <div>
+                    <div className='transaction-input'>
                        <label>Date</label>
                        <input type="date" name= "date" value={newTransaction.date} onChange={handleChange}></input> 
                     </div>
-                    <div className='button-container'>
+                    <div className='submit-button-container'>
                     <button type='submit'>Submit</button>
                     </div>
                 </form>

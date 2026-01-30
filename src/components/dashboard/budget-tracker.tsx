@@ -10,12 +10,12 @@ function BudgetTracker({budgetGoals, setBudgetGoals}:
             <h1 id="title">Budget Tracker</h1>  
             <h1>Set a Budget</h1>
             <form>
-                <div className='input-field'>
+                <div className='tracker-input'>
                     <label>Monthly Spending Limit</label>
                     <input type='number' value={budgetGoals.monthlySpendingLimit}
                     onChange={(event) => setBudgetGoals({...budgetGoals, monthlySpendingLimit: Number(event.target.value)})} aria-label="Spending Limit"/>
                 </div>
-                <div className="input-field">
+                <div className="tracker-input">
                     <label>Monthly Saving Goal</label>
                     <input type='number' value={budgetGoals.monthlySavingGoal}
                     onChange={(event) => setBudgetGoals({...budgetGoals, monthlySavingGoal: Number(event.target.value)})} aria-label="Saving Goal"/>
