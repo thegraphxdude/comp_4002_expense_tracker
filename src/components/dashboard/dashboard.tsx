@@ -96,7 +96,6 @@ function Dashboard() {
                     }))}
                 </ul>
             </div>
-                <h1 id="title">Budget Tracker</h1>
                 <BudgetTracker
                 budgetGoals = {budgetGoals}
                 setBudgetGoals = {setBudgetGoals}

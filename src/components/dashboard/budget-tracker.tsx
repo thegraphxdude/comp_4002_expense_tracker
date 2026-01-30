@@ -1,11 +1,13 @@
 import type { BudgetGoals } from "../../../src/types/budgetGoals";
+import "./budget-tracker.css"
 
 function BudgetTracker({budgetGoals, setBudgetGoals}: 
     {budgetGoals: BudgetGoals, setBudgetGoals: React.Dispatch<React.SetStateAction<BudgetGoals>>}){
 
     return(
-        
+      
         <div className='form-container'>
+            <h1 id="title">Budget Tracker</h1>  
             <h1>Set a Budget</h1>
             <form>
                 <div className='input-field'>
