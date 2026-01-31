@@ -5,6 +5,12 @@
     --white: #FFFFFF;
 }
 
+form {
+  background-color: rgb(245, 242, 242);
+  width: 1000px;
+  margin-left: 478px;
+}
+
 .expense h1 {
     text-align: center;
     color: #001936;
@@ -13,13 +19,48 @@
 }
 
 .expense ul {
-    list-style-type: none;
-    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 9px;  
 }
 
 .expense li {
-    justify-content: space-between;
+    width: 100%;
     display: flex;
-    flex-direction: column;
-    padding: 8px;
+    justify-content: space-between;
+    margin-left: 900px;
+    gap: 10px;
 }
+
+.expense h1 {
+    text-align: center;
+    padding: 0;
+    color: black;
+    font-size: 45px;
+}
+
+label > input {
+    color: #507a40;
+    margin: 5px;
+    border-radius: 23px;
+    height: 25px;
+}
+
+label > select {
+    border-radius: 23px;
+    margin: 5px;
+    height: 30px;
+}
+
+button {
+    padding: 3px;
+    margin: 3px;
+    border-radius: 28px;
+    color: #340bc7;
+    height: 30px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 800;
+    background-color: greenyellow;
+}
+
