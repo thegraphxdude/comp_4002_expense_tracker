@@ -62,11 +62,13 @@ function Income() {
     const formObject = Object.fromEntries(formData.entries())
 
     const newMonths = [...months]
-    newMonths[selectedMonthIndex].paycheques.push({
+    newMonths[selectedMonthIndex].paycheques = [...newMonths[selectedMonthIndex].paycheques,{
       employerName: formObject["employer-input"].toString(),
       totalEarned: parseInt(formObject["total-pay-input"].toString()),
       hourlyRate: parseInt(formObject["hourly-rate-input"].toString()),
-    })
+    }]
+
+    console.log("WHY IT DOESN't WOREK?")
 
     setMonths(newMonths)
   }
@@ -139,11 +141,11 @@ function Income() {
           {isInputHidden ? <div hidden={isInputHidden} id="paycheque-input">
             <form onSubmit={handlePaychequeInput}>
               <label htmlFor="employer-input">Employer Name:</label>
-              <input id="employer-input" className="income-month" type="text" />
+              <input name="employer-input" className="income-month" type="text" />
               <label htmlFor="total-pay-input">Total Earnings From Employer in {months[selectedMonthIndex].name}:</label>
-              <input id="total-pay-input" className="income-month" type="text" />
+              <input name="total-pay-input" className="income-month" type="text" />
               <label htmlFor="hourly-rate-input">Hourly Rate (Optional):</label>
-              <input id="hourly-rate-input" className="income-month" type="text" />
+              <input name="hourly-rate-input" className="income-month" type="text" />
               <input className="income-month" type="submit" value="Add to Paycheques"></input>
             </form>
           </div> : <></>}
