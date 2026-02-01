@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import "./expense.css"
-import "../../App.css"
+import "./expense.css";
+import "../../App.css";
 
 interface Expense {
     id: number;
@@ -16,9 +16,9 @@ export function Expenses() {
             amount: 1200
         },
         {
-           id: 2,
-           name: "Groceries",
-           amount: 200
+            id: 2,
+            name: "Groceries",
+            amount: 200
         },
         {
             id: 3,
@@ -35,30 +35,31 @@ export function Expenses() {
             name: "Clothes",
             amount: 100
         }
-
     ]);
+
     const [expenseType, setExpenseName] = useState("");
     const [amount, setAmount] = useState(0);
-    const [error, setError] = useState('');
+    const [error, setError] = useState("");
 
     function addExpense(event: React.FormEvent) {
-        let nextId = 1
-        if (expenseType === ''){
-            setError("Expense type cannot be empty.")
+        let nextId = 1;
+
+        if (expenseType === "") {
+            setError("Expense type cannot be empty.");
             event.preventDefault();
-            return   
+            return;
         }
 
         if (amount < 0) {
-            setError("Amount cannot be less than zero or negative.")
+            setError("Amount cannot be less than zero or negative.");
             event.preventDefault();
-            return
+            return;
         }
 
         const newExpense: Expense = {
             id: nextId++,
             name: expenseType,
-            amount: amount,
+            amount: amount
         };
 
         setExpenses([...expenses, newExpense]);
@@ -68,34 +69,33 @@ export function Expenses() {
 
     function removeExpense(id: number) {
         setExpenses(prev =>
-            prev.filter(expense => expense.id !== id
-            )
+            prev.filter(expense => expense.id !== id)
         );
-
     }
 
-    return (  
-        <div className="expense">    
-            <form>   
+    return (
+        <div className="expense">
+            <form>
                 <h1 id="title">Expenses</h1>
 
                 {error && <p className="error">{error}</p>}
 
                 <label>
                     Enter amount of expense:
-                    <input 
-                    type="number" 
-                    value={amount.toString()} 
-                    onChange={(e) => setAmount(Number(e.target.value))}
+                    <input
+                        type="number"
+                        value={amount.toString()}
+                        onChange={(e) => setAmount(Number(e.target.value))}
                     />
-                </label> 
+                </label>
 
                 {error && <p className="error">{error}</p>}
 
-                <label>Select Expense Type:
+                <label>
+                    Select Expense Type:
                     <select
-                    value={expenseType}
-                    onChange={(e) => setExpenseName(e.target.value)}
+                        value={expenseType}
+                        onChange={(e) => setExpenseName(e.target.value)}
                     >
                         <option></option>
                         <option>Grocery</option>
@@ -109,33 +109,24 @@ export function Expenses() {
                     </select>
                 </label>
 
-                <button type="button" onClick={addExpense}>Add Expense</button>
+                <button type="button" onClick={addExpense}>
+                    Add Expense
+                </button>
 
                 <ul>
                     {expenses.map((expense, index) => (
                         <li key={index}>
                             {expense.name}: ${expense.amount}
-
-                            <button type="button" onClick={() => removeExpense(expense.id)}>Delete</button>
+                            <button
+                                type="button"
+                                onClick={() => removeExpense(expense.id)}
+                            >
+                                Delete
+                            </button>
                         </li>
                     ))}
                 </ul>
             </form>
         </div>
-    );;
-    return (
-        <section className="content-container">
-            <div className="content">
-                <h1 id="title">
-                    Expenses
-                </h1>
-                <ul>{expenses.map((expense, index) => (
-                    <li key={index}>
-                        {expense.name}: ${expense.amount.toFixed(2)}
-                    </li>
-                ))}
-                </ul>
-            </div>
-        </section>
     );
-}  
+}
