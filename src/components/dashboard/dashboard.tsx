@@ -24,7 +24,7 @@ const testTransactions: Transaction[] = [
 
 
 
-function Dashboard() {
+function Dashboard({ userName, setUserName }: { userName: string; setUserName: (name: string) => void }) {
     const [budgetGoals, setBudgetGoals] = useState<BudgetGoals>({
         monthlySpendingLimit: 0,
         monthlySavingGoal: 0,
@@ -102,6 +102,15 @@ function Dashboard() {
         <div className="content-container">
         <section className="content">
             <div>
+                <div className="username-container">
+                    <h1>Hi, {userName}!</h1>
+                    <input
+                        className="username-input"
+                        type="text" 
+                        placeholder="Change name..." 
+                        onChange={(e) => setUserName(e.target.value)} 
+                    />
+                </div>
                 <h1 id="title">Financial Dashboard</h1>
             </div>
             <div className="summary-cards">

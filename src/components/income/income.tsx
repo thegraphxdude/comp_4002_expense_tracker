@@ -14,7 +14,7 @@ interface Month {
   paycheques: Paycheque[]
 }
 
-function Income() {
+function Income({ userName, setUserName }: { userName: string; setUserName: (name: string) => void }) {
   const samplePaycheques: Paycheque[] = [
     {
       employerName: "Unity Technologies",
@@ -115,6 +115,15 @@ function Income() {
     <>
       <div className="content-container">
         <section className="content">
+          <div className="username-container">
+              <h1>Hi, {userName}!</h1>
+              <input
+                  className="username-input"
+                  type="text" 
+                  placeholder="Change name..." 
+                  onChange={(e) => setUserName(e.target.value)} 
+              />
+          </div> 
           <h1 id="title">Income</h1>
           <h2>Past 5 Months</h2>
           <div id="graph-container">

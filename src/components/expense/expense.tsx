@@ -8,7 +8,7 @@ interface Expense {
     amount: number;
 };
 
-export function Expenses() {
+export function Expenses({ userName, setUserName }: { userName: string; setUserName: (name: string) => void }) {
     const [expenses, setExpenses] = useState<Expense[]>([
         {
             id: 1,
@@ -75,7 +75,16 @@ export function Expenses() {
     }
 
     return (  
-        <div className="expense">    
+        <div className="expense">
+            <div className="username-container">
+                <h1>Hi, {userName}!</h1>
+                <input
+                    className="username-input"
+                    type="text" 
+                    placeholder="Change name..." 
+                    onChange={(e) => setUserName(e.target.value)} 
+                />
+            </div>    
             <form>   
                 <h1 id="title">Expenses</h1>
 
