@@ -10,7 +10,7 @@ As an impulse buyer, I'd like to make a budget so I can check how much money I h
 
 ## Sprint 1 Contribution
 
-### Team
+### Team Contribution for Sprint 1
 
 - T.1 Set Up Project Git Repository: Completed by Pavel.
 - T.2 Initialize Project: Completed by Pavel.
@@ -20,8 +20,22 @@ As an impulse buyer, I'd like to make a budget so I can check how much money I h
 - T.6 Team Vercel Account/Management: Completed by Pavel.
 - O.2 Set up Page Layout: Completed by Cedrick.
 
-### Individual
+### Individual Contribution for Sprint 1
 
 - Dashboard Component and Styling: Completed by Pavel.
 - Income Component and Styling: Completed by Ian.
 - Expense Component and Styling: Completed by Cedrick.
+
+## Sprint 2 Contribution
+
+### Team Contribution for Sprint 2
+
+T.1 Multi Page Navigation: Completed by Ian.
+T.2 Navigation Interface(s): Completed by Ian.
+T.3: Shared state across pages: Completed by Pavel/Cedrick
+
+### Individual Contribution for Sprint 2
+
+- Requirements for Dashboard page: Completed by Pavel.
+- Requirements for Income page: Completed by Ian.
+- Requirements for Expenses page: Completed by Cedrick.
