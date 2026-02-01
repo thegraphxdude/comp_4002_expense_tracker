@@ -105,4 +105,19 @@ export function Expenses() {
             </form>
         </div>
     );;
+    return (
+        <section className="content-container">
+            <div className="content">
+                <h1 id="title">
+                    Expenses
+                </h1>
+                <ul>{sampleExpenses.map((expense, index) => (
+                    <li key={index}>
+                        {expense.name}: ${expense.amount.toFixed(2)}
+                    </li>
+                ))}
+                </ul>
+            </div>
+        </section>
+    );
 }  

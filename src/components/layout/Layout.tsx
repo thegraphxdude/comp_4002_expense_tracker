@@ -12,7 +12,7 @@ export function Layout({children}: Props) {
     return (
         <>
             <Nav />
-            <Header title="vite-project" />
+            <Header/>
             <main>
                 {children}
             </main>
