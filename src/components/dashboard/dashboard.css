@@ -56,16 +56,16 @@ ul {
     padding: 15px;
 }
 
-button{
+.dashboard-button{
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 24px;
     background-color: #576779;
     color: white;
     border-radius: 5px;
-    padding: 10px
+    padding: 10px, 20px;
 }
 
-button:hover{
+.dashboard-button:hover{
     background-color: #001936;
 }
 

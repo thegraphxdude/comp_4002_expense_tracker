@@ -8,7 +8,7 @@ interface Expense {
     amount: number;
 };
 
-export function Expenses() {
+export function Expenses({ userName, setUserName }: { userName: string; setUserName: (name: string) => void }) {
     const [expenses, setExpenses] = useState<Expense[]>([
         {
             id: 1,
@@ -79,7 +79,7 @@ export function Expenses() {
                 <h1 id="title">Expenses</h1>
 
                 {error && <p className="error">{error}</p>}
-
+                <div className="expense-labels">
                 <label>
                     Enter amount of expense:
                     <input
@@ -127,6 +127,7 @@ export function Expenses() {
                     ))}
                 </ul>
             </form>
+            </section>
         </div>
     );
 }

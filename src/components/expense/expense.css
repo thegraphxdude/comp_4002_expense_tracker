@@ -26,7 +26,7 @@ label > select {
     height: 30px;
 }
 
-button {
+.remove-expenses {
     padding: 3px;
     margin: 3px;
     border-radius: 28px;
@@ -41,4 +41,18 @@ button {
     color: red;
     flex-direction: column;
     padding: 8px;
+}
+
+.expense{
+    background-color: white;
+}
+
+.expense-labels{
+    display: flex;
+    justify-content: center;
+}
+
+.expense-container{
+    display: flex;
+    justify-content: center;
 }

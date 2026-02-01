@@ -24,7 +24,7 @@ const testTransactions: Transaction[] = [
 
 
 
-function Dashboard() {
+function Dashboard({ userName, setUserName }: { userName: string; setUserName: (name: string) => void }) {
     const [budgetGoals, setBudgetGoals] = useState<BudgetGoals>({
         monthlySpendingLimit: 0,
         monthlySavingGoal: 0,
@@ -102,6 +102,17 @@ function Dashboard() {
         <div className="content-container">
         <section className="content">
             <div>
+                <div className="username-container">
+                    <h1>Hi, {userName}!</h1>
+                    <div className="username-input">
+                        <input
+                            className="username-input"
+                            type="text" 
+                            placeholder="Change name..." 
+                            onChange={(e) => setUserName(e.target.value)} 
+                        />
+                    </div>
+                </div>
                 <h1 id="title">Financial Dashboard</h1>
             </div>
             <div className="summary-cards">
@@ -139,7 +150,7 @@ function Dashboard() {
                                 {sign}${transaction.amount.toFixed(2)}
                             </div>
                             <div className="delete-button">
-                                <button onClick={()=>{deleteTransaction(transaction.id)}}>Delete</button>
+                                <button className="dashboard-button" onClick={()=>{deleteTransaction(transaction.id)}}>Delete</button>
                             </div>
                         </li>
                         )
@@ -172,7 +183,7 @@ function Dashboard() {
                        <input type="date" name= "date" value={newTransaction.date} onChange={handleChange}></input> 
                     </div>
                     <div className='submit-button-container'>
-                    <button type='submit'>Submit</button>
+                    <button  className="dashboard-button" type='submit'>Submit</button>
                     </div>
                 </form>
             </div>

@@ -1,13 +1,14 @@
-import "./nav";
+import "./nav.css"
+import { Link } from "react-router";
 
 function Nav() {
     return (
         <nav>
-            <ul>
-              <li>Home</li>
-              <li>About</li>
-              <li>Contact</li>
-            </ul>
+            <div id="navigation">
+                <Link to="/">Dashboard</Link>
+                <Link to="/expenses">Expenses</Link>
+                <Link to="/income">Income</Link>
+            </div>
         </nav>
     );
 }
