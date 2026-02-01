@@ -104,12 +104,14 @@ function Dashboard({ userName, setUserName }: { userName: string; setUserName: (
             <div>
                 <div className="username-container">
                     <h1>Hi, {userName}!</h1>
-                    <input
-                        className="username-input"
-                        type="text" 
-                        placeholder="Change name..." 
-                        onChange={(e) => setUserName(e.target.value)} 
-                    />
+                    <div className="username-input">
+                        <input
+                            className="username-input"
+                            type="text" 
+                            placeholder="Change name..." 
+                            onChange={(e) => setUserName(e.target.value)} 
+                        />
+                    </div>
                 </div>
                 <h1 id="title">Financial Dashboard</h1>
             </div>

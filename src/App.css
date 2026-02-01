@@ -68,3 +68,16 @@ body {
     justify-content: center;
     width: 100%; 
 }
+
+.username-input {
+    display: block;
+    margin: auto;
+    width: 160px;
+    padding: 6px;
+    text-align: center;
+    border-radius: 4px;
+}
+
+.username-container{
+    padding: 40px;
+}

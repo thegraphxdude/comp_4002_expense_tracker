@@ -75,21 +75,24 @@ export function Expenses({ userName, setUserName }: { userName: string; setUserN
     }
 
     return (  
-        <div className="expense">
+        <div className="expense-container">
+            <section className="expense">
             <div className="username-container">
                 <h1>Hi, {userName}!</h1>
-                <input
-                    className="username-input"
-                    type="text" 
-                    placeholder="Change name..." 
-                    onChange={(e) => setUserName(e.target.value)} 
-                />
-            </div>    
+                <div className="username-input">
+                    <input
+                        className="username-input"
+                        type="text" 
+                        placeholder="Change name..." 
+                        onChange={(e) => setUserName(e.target.value)} 
+                    />
+                </div>
+            </div>
             <form>   
                 <h1 id="title">Expenses</h1>
 
                 {error && <p className="error">{error}</p>}
-
+                <div className="expense-labels">
                 <label>
                     Enter amount of expense:
                     <input 
@@ -119,32 +122,18 @@ export function Expenses({ userName, setUserName }: { userName: string; setUserN
                 </label>
 
                 <button type="button" onClick={addExpense}>Add Expense</button>
-
+                </div>
                 <ul>
                     {expenses.map((expense, index) => (
                         <li key={index}>
                             {expense.name}: ${expense.amount}
 
-                            <button type="button" onClick={() => removeExpense(expense.id)}>Delete</button>
+                            <button className="remove-expenses" type="button" onClick={() => removeExpense(expense.id)}>Delete</button>
                         </li>
                     ))}
                 </ul>
             </form>
+            </section>
         </div>
-    );;
-    return (
-        <section className="content-container">
-            <div className="content">
-                <h1 id="title">
-                    Expenses
-                </h1>
-                <ul>{expenses.map((expense, index) => (
-                    <li key={index}>
-                        {expense.name}: ${expense.amount.toFixed(2)}
-                    </li>
-                ))}
-                </ul>
-            </div>
-        </section>
     );
 }  
