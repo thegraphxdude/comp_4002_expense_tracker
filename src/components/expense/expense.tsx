@@ -86,7 +86,7 @@ export function Expenses() {
                     <input 
                     type="number" 
                     value={amount.toString()} 
-                    onChange={(e) => setAmount(e.target.value)}
+                    onChange={(e) => setAmount(Number(e.target.value))}
                     />
                 </label> 
 
@@ -129,7 +129,7 @@ export function Expenses() {
                 <h1 id="title">
                     Expenses
                 </h1>
-                <ul>{sampleExpenses.map((expense, index) => (
+                <ul>{expenses.map((expense, index) => (
                     <li key={index}>
                         {expense.name}: ${expense.amount.toFixed(2)}
                     </li>
