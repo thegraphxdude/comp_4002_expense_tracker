@@ -29,7 +29,7 @@ form {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    margin-left: 900px;
+    margin-left: 0px;
     gap: 10px;
 }
 
@@ -64,3 +64,6 @@ button {
     background-color: greenyellow;
 }
 
+.error {
+    color: red;
+}

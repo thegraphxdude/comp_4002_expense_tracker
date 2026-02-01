@@ -1,6 +1,6 @@
+import React, { useState } from "react";
 import "./expense.css"
 import "../../App.css"
-import { useState } from "react";
 
 interface Expense {
     name: string;
@@ -8,13 +8,36 @@ interface Expense {
 };
 
 export function Expenses() {
-    const [expenses, setExpenses] = useState<Expense[]>([]);
-    const [expenseName, setExpenseName] = useState("");
-    const [amount, setAmount] = useState(0);
+    const [expenses, setExpenses] = useState<Expense[]>([
+        {
+            name: "Rent",
+            amount: 1200
+        },
+        {
+           name: "Groceries",
+           amount: 200
+        },
+        {
+            name: "Car Insurance",
+            amount: 90
+        },
+        {
+            name: "Medication",
+            amount: 30
+        },
+        {
+            name: "Clothes",
+            amount: 100
+        }
 
-    function addExpense(event) {
-        if (expenseName === ''){
-            setError("Expense name cannot be empty")
+    ]);
+    const [expenseType, setExpenseName] = useState("");
+    const [amount, setAmount] = useState(0);
+    const [error, setError] = useState('');
+
+    function addExpense(event: React.FormEvent) {
+        if (expenseType === ''){
+            setError("Expense type cannot be empty")
             event.preventDefault();
             return   
         }
@@ -26,7 +49,7 @@ export function Expenses() {
         }
 
         const newExpense: Expense = {
-            name: expenseName,
+            name: expenseType,
             amount: amount,
         };
 
@@ -40,6 +63,8 @@ export function Expenses() {
             <form>   
                 <h1 id="title">Expenses</h1>
 
+                {error && <p className="error">{error}</p>}
+
                 <label>
                     Enter amount of expense:
                     <input 
@@ -49,9 +74,11 @@ export function Expenses() {
                     />
                 </label> 
 
+                {error && <p className="error">{error}</p>}
+
                 <label>Select Expense Type:
                     <select
-                    value={expenseName}
+                    value={expenseType}
                     onChange={(e) => setExpenseName(e.target.value)}
                     >
                         <option></option>

@@ -1,5 +1,3 @@
-import React from 'react';
-
 function CurrentDate() {
     const currentDate: Date =  new Date();
 
@@ -8,4 +6,4 @@ function CurrentDate() {
     );
 }
 
-export default DateDisplay;
+export default CurrentDate;
