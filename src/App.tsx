@@ -2,16 +2,22 @@ import './App.css'
 import Dashboard from './components/dashboard/dashboard';
 import Income from './components/income/income';
 import { Expenses } from './components/expense/expense'
-import { Layout } from './components/layout/Layout';
+
+import { Routes, Route } from 'react-router';
 
 function App() {
   return (
     <>
-      <Layout title='vite-project'>
-        <Dashboard/>
-        <Income/>
-        <Expenses/>
-      </Layout>
+        <Routes>
+          <Route path="/" element={<Dashboard/>}/>
+        </Routes>
+        <Routes>
+          <Route path="income" element={<Income/>}/>
+        </Routes>
+        <Routes>
+          <Route path="expenses" element={<Expenses/>}/>
+        </Routes>
+      
     </>
   )
 };

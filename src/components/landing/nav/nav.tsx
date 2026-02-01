@@ -1,13 +1,13 @@
-import "./nav";
+import "./nav.css"
 
 function Nav() {
     return (
         <nav>
-            <ul>
-              <li>Home</li>
-              <li>About</li>
-              <li>Contact</li>
-            </ul>
+            <div id="navigation">
+                <a href="/">Dashboard</a>
+                <a href="/expenses">Expenses</a>
+                <a href="/income">income</a>
+            </div>
         </nav>
     );
 }
