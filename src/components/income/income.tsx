@@ -54,7 +54,7 @@ function Income() {
   const [selectedMonthIndex, setSelectedMonthIndex] = useState(new Date().getMonth())
   const [isInputHidden, setIsInputHidden] = useState(false);
 
-  function handlePaychequeInput(e: React.FormEvent<HTMLFormElement>){
+  function handlePaychequeInput(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
 
     const form = e.currentTarget
@@ -62,13 +62,11 @@ function Income() {
     const formObject = Object.fromEntries(formData.entries())
 
     const newMonths = [...months]
-    newMonths[selectedMonthIndex].paycheques = [...newMonths[selectedMonthIndex].paycheques,{
+    newMonths[selectedMonthIndex].paycheques = [...newMonths[selectedMonthIndex].paycheques, {
       employerName: formObject["employer-input"].toString(),
       totalEarned: parseInt(formObject["total-pay-input"].toString()),
       hourlyRate: parseInt(formObject["hourly-rate-input"].toString()),
     }]
-
-    console.log("WHY IT DOESN't WOREK?")
 
     setMonths(newMonths)
   }
@@ -89,6 +87,16 @@ function Income() {
     }
 
     return total
+  }
+
+  function deletePaycheque(employer: string){
+    const newMonths = [...months]
+    newMonths[selectedMonthIndex] = {
+      ...newMonths[selectedMonthIndex],
+      paycheques: newMonths[selectedMonthIndex].paycheques.filter((cheque) => cheque.employerName !== employer)
+    }
+
+    setMonths(newMonths)
   }
 
   let topEarningMonthOnGraph: Month = months[selectedMonthIndex]
@@ -138,7 +146,7 @@ function Income() {
             </select>
             <button className="income-month" onClick={toggleInputVisibility}>{isInputHidden ? "-" : "+"}</button>
           </div>
-          {isInputHidden ? <div hidden={isInputHidden} id="paycheque-input">
+          {isInputHidden ? <div id="paycheque-input">
             <form onSubmit={handlePaychequeInput}>
               <label htmlFor="employer-input">Employer Name:</label>
               <input name="employer-input" className="income-month" type="text" />
@@ -165,18 +173,21 @@ function Income() {
               average /= 12
 
               return (
-                <div className="transaction-item incomes">
-                  <span>
-                    <h3>{paycheque.employerName}</h3>
-                    <p>${paycheque.totalEarned} {!paycheque.hourlyRate ? '' : "@ $" + paycheque.hourlyRate + "/hr"}</p>
-                  </span>
-                  <span>
-                    <p>${payDifference >= 0 ? payDifference + " more" : -payDifference + " less"} than last month</p>
-                  </span>
-                  <span>
-                    <p>${average.toFixed(2)} average in the past 12 months</p>
-                  </span>
-                </div>
+                <>
+                  <div className="transaction-item incomes">
+                    <span>
+                      <h3>{paycheque.employerName}</h3>
+                      <p>${paycheque.totalEarned} {!paycheque.hourlyRate ? '' : "@ $" + paycheque.hourlyRate + "/hr"}</p>
+                    </span>
+                    <span>
+                      <p>${payDifference >= 0 ? payDifference + " more" : -payDifference + " less"} than last month</p>
+                    </span>
+                    <span>
+                      <p>${average.toFixed(2)} average in the past 12 months</p>
+                    </span>
+                  </div>
+                  <button onClick={()=>{deletePaycheque(paycheque.employerName)}} className="income-month">Remove</button>
+                </>
               )
             }))}
           </div>
