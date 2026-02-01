@@ -29,7 +29,7 @@
     align-items: flex-end;
 }
 
-#bar {
+.bar {
     background-color: var(--dark-blue);
     width: 100px;
     height: 400px;
