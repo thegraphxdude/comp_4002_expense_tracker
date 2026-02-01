@@ -3,7 +3,8 @@ footer {
 }
 
 footer {
-    position: fixed;
+    color: #FFFFFF;
+    position: static;
     display: flex;
     justify-content: center;
     bottom: 0;

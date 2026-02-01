@@ -3,7 +3,7 @@ h1 {
 }
 
 header {
-    position: fixed;
+    position: absolute;
     display: flex;
     justify-content: center;
     top: 0;
