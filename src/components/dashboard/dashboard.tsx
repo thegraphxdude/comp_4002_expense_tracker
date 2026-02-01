@@ -139,7 +139,7 @@ function Dashboard() {
                                 {sign}${transaction.amount.toFixed(2)}
                             </div>
                             <div className="delete-button">
-                                <button onClick={()=>{deleteTransaction(transaction.id)}}>Delete</button>
+                                <button className="dashboard-button" onClick={()=>{deleteTransaction(transaction.id)}}>Delete</button>
                             </div>
                         </li>
                         )
@@ -172,7 +172,7 @@ function Dashboard() {
                        <input type="date" name= "date" value={newTransaction.date} onChange={handleChange}></input> 
                     </div>
                     <div className='submit-button-container'>
-                    <button type='submit'>Submit</button>
+                    <button  className="dashboard-button" type='submit'>Submit</button>
                     </div>
                 </form>
             </div>
