@@ -138,8 +138,8 @@ function Income({ userName, setUserName }: { userName: string; setUserName: (nam
               {pastFiveMonths.map((month) => {
                 const barStyle = { height: (getMonthlyTotal(month) / mostMonthlyEarnings * 400).toString() + "px" }
                 return (
-                  <div id="graph-slice">
-                    <div id="bar" style={barStyle}></div>
+                  <div className="graph-slice">
+                    <div className="bar" style={barStyle}></div>
                     <p>{month.name.slice(0, 3)}</p>
                   </div>
                 )
