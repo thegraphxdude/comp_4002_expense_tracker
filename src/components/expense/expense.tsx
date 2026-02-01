@@ -3,6 +3,7 @@ import "./expense.css"
 import "../../App.css"
 
 interface Expense {
+    id: number;
     name: string;
     amount: number;
 };
@@ -10,22 +11,27 @@ interface Expense {
 export function Expenses() {
     const [expenses, setExpenses] = useState<Expense[]>([
         {
+            id: 1,
             name: "Rent",
             amount: 1200
         },
         {
+           id: 2,
            name: "Groceries",
            amount: 200
         },
         {
+            id: 3,
             name: "Car Insurance",
             amount: 90
         },
         {
+            id: 4,
             name: "Medication",
             amount: 30
         },
         {
+            id: 5,
             name: "Clothes",
             amount: 100
         }
@@ -36,19 +42,21 @@ export function Expenses() {
     const [error, setError] = useState('');
 
     function addExpense(event: React.FormEvent) {
+        let nextId = 1
         if (expenseType === ''){
-            setError("Expense type cannot be empty")
+            setError("Expense type cannot be empty.")
             event.preventDefault();
             return   
         }
 
         if (amount < 0) {
-            setError("Amount cannot be less than zero or negative")
+            setError("Amount cannot be less than zero or negative.")
             event.preventDefault();
             return
         }
 
         const newExpense: Expense = {
+            id: nextId++,
             name: expenseType,
             amount: amount,
         };
@@ -57,6 +65,14 @@ export function Expenses() {
         setExpenseName("");
         setAmount(0);
     };
+
+    function removeExpense(id: number) {
+        setExpenses(prev =>
+            prev.filter(expense => expense.id !== id
+            )
+        );
+
+    }
 
     return (  
         <div className="expense">    
@@ -99,6 +115,8 @@ export function Expenses() {
                     {expenses.map((expense, index) => (
                         <li key={index}>
                             {expense.name}: ${expense.amount}
+
+                            <button type="button" onClick={() => removeExpense(expense.id)}>Delete</button>
                         </li>
                     ))}
                 </ul>
