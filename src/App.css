@@ -1,5 +1,83 @@
+:root {
+    --dark-blue: #001936;
+    --gray: #576779;
+    --green: #507a40;
+    --white: #FFFFFF;
+
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 24px;
+}
+
+/* from income */
+
 body {
-    background-color: white;
-    color: #011936;
-    font-family: Georgia, serif;
+    background-color: var(--dark-blue);
+    color: var(--gray)
+}
+
+#title {
+    color: var(--dark-blue);
+    font-size: 48px;
+    text-align: center;
+}
+
+.income-month {
+    padding: 10px;
+    align-content: center;
+    background-color: var(--gray);
+    color: var(--white);
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: inherit;
+    border: 0px;
+    margin: 1em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    min-width: 50px;
+}
+
+/* from dashboard */
+
+.content-container {
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+    margin: 50px;
+}
+.content {
+    background-color: #f4f4f4;
+    color: var(--dark-blue);
+    max-width: 1000px;
+    width: 100%;
+    padding: 40px;
+}
+
+.transaction-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  background-color: var(--white);
+  border-radius: 8px;
+  border-left: 4px solid transparent;
+}
+
+.transactions h2 {
+    display: flex;
+    justify-content: center;
+    width: 100%; 
+}
+
+.username-input {
+    display: block;
+    margin: auto;
+    width: 160px;
+    padding: 6px;
+    text-align: center;
+    border-radius: 4px;
+}
+
+.username-container{
+    padding: 40px;
 }

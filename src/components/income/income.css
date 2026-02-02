@@ -1,54 +1,84 @@
-:root {
-    --dark-blue: #001936;
-    --gray: #576779;
-    --green: #9fc490;
-    --white: #FFFFFF;
-
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 24px;
-}
-
-body {
-    background-color: var(--dark-blue);
-    color: var(--gray)
-}
-
-.income-container {
-    display: flex;
-    justify-content: center;
-    padding: 30px;
-    margin: 50px;
-}
-.income-display {
-    background-color: #f4f4f4;
-    color: var(--dark-blue);
-    max-width: 1000px;
-    width: 100%;
-    padding: 40px;
-    text-align: center;
-}
-
-#title {
-    color: var(--dark-blue);
-    font-size: 64px;
-}
-
-#income-month {
-    padding: 10px;
-    align-content: center;
-    background-color: var(--gray);
-    color: var(--white);
-    border-radius: 10px;
-    font-family: inherit;
-    font-size: inherit;
-    border: 0px;
-}
-
-#salary-overview {
+#graph-container {
     display: flex;
     flex-direction: row;
 }
 
-#salary-overview > div {
-    padding: 1em;
+#graph-side-label {
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    translate: 0px, -100px;
+    margin-bottom: 2.2em;
+}
+
+#graph-side-label p {
+    margin-top: 0em;
+}
+
+#graph {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: center;
+    background: repeating-linear-gradient(var(--gray),
+            var(--gray) 2px,
+            #ffffff00 2px,
+            #ffffff00 199px);
+    width: 100%;
+    align-items: flex-end;
+}
+
+.bar {
+    background-color: var(--dark-blue);
+    width: 100px;
+    height: 400px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+#income-month-container {
+    display: flex;
+    justify-content: center;
+}
+
+#salary-overview {
+    display: flex;
+    flex-direction: column;
+}
+
+#paycheque-input {
+    display: flex;
+    justify-content: center;
+    background-color: var(--white);
+    padding-top: 1em;
+    margin-bottom: 1em;
+    border-radius: 8px;
+    border-left: 4px solid transparent;
+    border-left-color: var(--dark-blue);
+}
+
+#paycheque-input form {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    width: 60%;
+}
+
+#paycheque-input form label {
+    margin-left: 1.25em;
+}
+
+#paycheque-input form .income-month {
+    margin-top: 0.25em;
+}
+
+.transaction-item.incomes span {
+    width: 30%;
+}
+
+h2 {
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }

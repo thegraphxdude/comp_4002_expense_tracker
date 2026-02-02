@@ -1,39 +1,58 @@
-:root {
-    --dark-blue: #001936;
-    --gray: #576779;
-    --green: #507a40;
-    --white: #FFFFFF;
-}
-
-.expense-container {
-    display: flex;
-    justify-content: center;
-    padding: 30px;
-    margin: 50px;
-}
-.expense {
-    background-color: #f4f4f4;
-    color: var(--dark-blue);
-    max-width: 1000px;
+.expense li {
     width: 100%;
-    padding: 40px;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 0px;
+    gap: 10px;
 }
 
 .expense h1 {
     text-align: center;
-    color: #001936;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 34px;
-}
-
-.expense ul {
-    list-style-type: none;
     padding: 0;
+    color: black;
+    font-size: 45px;
 }
 
-.expense li {
-    justify-content: space-between;
-    display: flex;
+label > input {
+    color: #507a40;
+    margin: 5px;
+    border-radius: 23px;
+    height: 25px;
+}
+
+label > select {
+    border-radius: 23px;
+    margin: 5px;
+    height: 30px;
+}
+
+.remove-expenses {
+    padding: 3px;
+    margin: 3px;
+    border-radius: 28px;
+    color: #340bc7;
+    height: 30px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 800;
+    background-color: greenyellow;
+}
+
+.error {
+    color: red;
     flex-direction: column;
     padding: 8px;
+}
+
+.expense{
+    background-color: white;
+}
+
+.expense-labels{
+    display: flex;
+    justify-content: center;
+}
+
+.expense-container{
+    display: flex;
+    justify-content: center;
 }
