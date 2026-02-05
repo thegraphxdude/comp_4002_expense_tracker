@@ -147,7 +147,7 @@ function Income({ userName, setUserName }: { userName: string; setUserName: (nam
             </div>
           </div>
           <div id="income-month-container">
-            <select id="income-month" className='income-month' aria-label="Income Month" onChange={handleMonthChange}>
+            <select id="income-month" aria-label="Income Month" onChange={handleMonthChange}>
               {months.map((month) => {
                 const monthIndex: number = months.indexOf(month);
                 return (
@@ -160,12 +160,12 @@ function Income({ userName, setUserName }: { userName: string; setUserName: (nam
           {isInputHidden ? <div id="paycheque-input">
             <form onSubmit={handlePaychequeInput}>
               <label htmlFor="employer-input">Employer Name:</label>
-              <input name="employer-input" className="income-month" type="text" />
+              <input name="employer-input" className="income-form-input" type="text" />
               <label htmlFor="total-pay-input">Total Earnings From Employer in {months[selectedMonthIndex].name}:</label>
-              <input name="total-pay-input" className="income-month" type="text" />
+              <input name="total-pay-input" className="income-form-input" type="text" />
               <label htmlFor="hourly-rate-input">Hourly Rate (Optional):</label>
-              <input name="hourly-rate-input" className="income-month" type="text" />
-              <input className="income-month" type="submit" value="Add to Paycheques"></input>
+              <input name="hourly-rate-input" className="income-form-input" type="text" />
+              <input id="income-form-submit" className="form-submit" type="submit" value="Add to Paycheques"></input>
             </form>
           </div> : <></>}
           <div id="salary-overview">
@@ -185,19 +185,19 @@ function Income({ userName, setUserName }: { userName: string; setUserName: (nam
 
               return (
                 <>
-                  <div className="transaction-item incomes">
-                    <span>
+                  <div className="content-item">
+                    <span className="income-component">
                       <h3>{paycheque.employerName}</h3>
                       <p>${paycheque.totalEarned} {!paycheque.hourlyRate ? '' : "@ $" + paycheque.hourlyRate + "/hr"}</p>
                     </span>
-                    <span>
+                    <span className="income-component">
                       <p>${payDifference >= 0 ? payDifference + " more" : -payDifference + " less"} than last month</p>
                     </span>
-                    <span>
+                    <span className="income-component">
                       <p>${average.toFixed(2)} average in the past 12 months</p>
                     </span>
                   </div>
-                  <button onClick={()=>{deletePaycheque(paycheque.employerName)}} className="income-month">Remove</button>
+                  <button onClick={()=>{deletePaycheque(paycheque.employerName)}} className="remove-income-item">Remove</button>
                 </>
               )
             }))}
