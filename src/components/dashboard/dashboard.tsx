@@ -116,15 +116,15 @@ function Dashboard({ userName, setUserName }: { userName: string; setUserName: (
                 <h1 id="title">Financial Dashboard</h1>
             </div>
             <div className="summary-cards">
-                <div className="total-income">
+                <div className="summary-card1">
                     <h2>Total Income</h2>
                     <p> ${totalIncome.toFixed(2)}</p>
                 </div>
-                <div className="total-expenses">
+                <div className="summary-card2">
                     <h2>Total Expenses</h2>
                     <p> ${totalExpenses.toFixed(2)}</p>
                 </div>
-                <div className="balance">
+                <div className="summary-card1">
                     <h2>Balance</h2>
                     <p> ${balance.toFixed(2)}</p>
                 </div>
@@ -136,7 +136,7 @@ function Dashboard({ userName, setUserName }: { userName: string; setUserName: (
                         //Checks if the transaction is negative or positive
                         const sign = transaction.type === 'income' ? "+": "-";
                         return(
-                        <li key={transaction.id} className={`transaction-item ${transaction.type}s`}>
+                        <li key={transaction.id} className={`content-item ${transaction.type}s`}>
                             <div className="transaction-info">
                                 <h3>{transaction.description}</h3>
                                 <span className="transaction-category">{transaction.category}</span>
@@ -194,15 +194,15 @@ function Dashboard({ userName, setUserName }: { userName: string; setUserName: (
             <div>
             </div>
             <div className="summary-cards">
-                <div className="remaining-balance">
+                <div className="summary-card1">
                     <h2>Remaining Spending Balance</h2>
                     <p> ${remainingBalance.toFixed(2)}</p>
                 </div>
-                <div className="current-savings">
+                <div className="summary-card2">
                     <h2>Current Savings</h2>
                     <p> ${currentSavings.toFixed(2)}</p>
                 </div>
-                <div className="savings-progress">
+                <div className="summary-card1">
                     <h2>Savings Progress</h2>
                     <p> {savingProgress}%</p>
                 </div>

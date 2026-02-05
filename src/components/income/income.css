@@ -1,6 +1,12 @@
 #graph-container {
+    padding: 3rem;
+    padding-bottom: 1rem;
     display: flex;
     flex-direction: row;
+    background-color: var(--container-background);
+    border-radius: 10px;
+    border: 1px solid black;
+    box-shadow: var(--subtle-box-shadow);
 }
 
 #graph-side-label {
@@ -21,8 +27,8 @@
     flex-direction: row;
     justify-content: space-between;
     text-align: center;
-    background: repeating-linear-gradient(var(--gray),
-            var(--gray) 2px,
+    background: repeating-linear-gradient(var(--text),
+            var(--text) 2px,
             #ffffff00 2px,
             #ffffff00 199px);
     width: 100%;
@@ -30,16 +36,22 @@
 }
 
 .bar {
-    background-color: var(--dark-blue);
+    background-color: var(--secondary-content);
     width: 100px;
     height: 400px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    box-shadow: var(--standard-box-shadow);
 }
 
 #income-month-container {
     display: flex;
     justify-content: center;
+    margin: 1rem;
+}
+
+#income-form-submit {
+    margin-top: 1rem;
 }
 
 #salary-overview {
@@ -69,12 +81,17 @@
     margin-left: 1.25em;
 }
 
-#paycheque-input form .income-month {
-    margin-top: 0.25em;
+.income-form-input {
+    margin-bottom: 0.5rem;
+    margin-top: 0.25rem;
 }
 
-.transaction-item.incomes span {
+.income-component {
     width: 30%;
+}
+
+.remove-income-item {
+    margin-bottom: 2rem;
 }
 
 h2 {

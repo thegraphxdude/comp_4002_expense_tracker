@@ -16,9 +16,9 @@ export function Expenses({ userName, setUserName }: { userName: string; setUserN
             amount: 1200
         },
         {
-           id: 2,
-           name: "Groceries",
-           amount: 200
+            id: 2,
+            name: "Groceries",
+            amount: 200
         },
         {
             id: 3,
@@ -43,10 +43,10 @@ export function Expenses({ userName, setUserName }: { userName: string; setUserN
 
     function addExpense(event: React.FormEvent) {
         let nextId = 1
-        if (expenseType === ''){
+        if (expenseType === '') {
             setError("Expense type cannot be empty.")
             event.preventDefault();
-            return   
+            return
         }
 
         if (amount < 0) {
@@ -74,65 +74,66 @@ export function Expenses({ userName, setUserName }: { userName: string; setUserN
 
     }
 
-    return (  
-        <div className="expense-container">
-            <section className="expense">
-            <div className="username-container">
-                <h1>Hi, {userName}!</h1>
-                <div className="username-input">
-                    <input
-                        className="username-input"
-                        type="text" 
-                        placeholder="Change name..." 
-                        onChange={(e) => setUserName(e.target.value)} 
-                    />
+    return (
+        <div className="content-container">
+            <section className="content">
+                <div className="username-container">
+                    <h1>Hi, {userName}!</h1>
+                    <div className="username-input">
+                        <input
+                            className="username-input"
+                            type="text"
+                            placeholder="Change name..."
+                            onChange={(e) => setUserName(e.target.value)}
+                        />
+                    </div>
                 </div>
-            </div>
-            <form>   
-                <h1 id="title">Expenses</h1>
+                <div className="content-item">
+                    <h1 id="title">Expenses</h1>
+                    <form>
+                        {error && <p className="error">{error}</p>}
+                        <div className="expense-labels">
+                            <label>
+                                Enter amount of expense:
+                                <input
+                                    type="number"
+                                    value={amount.toString()}
+                                    onChange={(e) => setAmount(Number(e.target.value))}
+                                />
+                            </label>
 
-                {error && <p className="error">{error}</p>}
-                <div className="expense-labels">
-                <label>
-                    Enter amount of expense:
-                    <input 
-                    type="number" 
-                    value={amount.toString()} 
-                    onChange={(e) => setAmount(Number(e.target.value))}
-                    />
-                </label> 
+                            {error && <p className="error">{error}</p>}
 
-                {error && <p className="error">{error}</p>}
+                            <label>Select Expense Type:
+                                <select
+                                    value={expenseType}
+                                    onChange={(e) => setExpenseName(e.target.value)}
+                                >
+                                    <option></option>
+                                    <option>Grocery</option>
+                                    <option>Utility</option>
+                                    <option>Mortage</option>
+                                    <option>Rent</option>
+                                    <option>Tuition</option>
+                                    <option>Medication</option>
+                                    <option>Maintainance</option>
+                                    <option>General Fees</option>
+                                </select>
+                            </label>
 
-                <label>Select Expense Type:
-                    <select
-                    value={expenseType}
-                    onChange={(e) => setExpenseName(e.target.value)}
-                    >
-                        <option></option>
-                        <option>Grocery</option>
-                        <option>Utility</option>
-                        <option>Mortage</option>
-                        <option>Rent</option>
-                        <option>Tuition</option>
-                        <option>Medication</option>
-                        <option>Maintainance</option>
-                        <option>General Fees</option>
-                    </select>
-                </label>
+                            <button type="button" onClick={addExpense}>Add Expense</button>
+                        </div>
+                        <ul>
+                            {expenses.map((expense, index) => (
+                                <li key={index}>
+                                    {expense.name}: ${expense.amount}
 
-                <button type="button" onClick={addExpense}>Add Expense</button>
+                                    <button className="remove-expenses" type="button" onClick={() => removeExpense(expense.id)}>Delete</button>
+                                </li>
+                            ))}
+                        </ul>
+                    </form>
                 </div>
-                <ul>
-                    {expenses.map((expense, index) => (
-                        <li key={index}>
-                            {expense.name}: ${expense.amount}
-
-                            <button className="remove-expenses" type="button" onClick={() => removeExpense(expense.id)}>Delete</button>
-                        </li>
-                    ))}
-                </ul>
-            </form>
             </section>
         </div>
     );

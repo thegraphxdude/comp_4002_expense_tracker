@@ -2,27 +2,23 @@
     font-style: italic;
 }
 
-.total-income, .remaining-balance {
+.summary-card1 {
     padding: 2rem;
     border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    background-color: var(--dark-blue);
+    background-color: var(--primary-content);
     color: var(--white);
+    border: 1px, solid #000;
+    box-shadow: var(--standard-box-shadow);
 }
-.total-expenses, .current-savings{
-    background-color: var(--gray);
+.summary-card2{
+    background-color: var(--secondary-content);
     color: var(--white);
     padding: 2rem;
     border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.balance, .savings-progress {
-    background-color: var(--green);
-    color: var(--white);
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px, solid #000;
+    box-shadow: var(--standard-box-shadow);
 }
 
 .summary-cards {
@@ -54,19 +50,6 @@ ul {
     display: flex;
     justify-content: center;
     padding: 15px;
-}
-
-.dashboard-button{
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 24px;
-    background-color: #576779;
-    color: white;
-    border-radius: 5px;
-    padding: 10px, 20px;
-}
-
-.dashboard-button:hover{
-    background-color: #001936;
 }
 
 label{

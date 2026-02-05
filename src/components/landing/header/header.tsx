@@ -1,11 +1,12 @@
+import Nav from "../nav/nav";
 import "./header.css";
 
 function Header() {
     return (
-    <header className="title">
-        <h1>Expense and Income Tracker</h1>
-    </header>
+        <header>
+            Expense Tracker {<Nav />}
+        </header>
     )
 }
 
-export default Header;
+export default Header

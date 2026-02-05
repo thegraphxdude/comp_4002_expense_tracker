@@ -1,11 +1,10 @@
-h1 {
-    font-size: 32px;
-}
-
 header {
-    position: absolute;
+    font-size: 28px;
+    color: var(--text);
+    position: static;
     display: flex;
-    justify-content: center;
-    top: 0;
-    width: 100%;
+    justify-content: left;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    border-bottom: 1px solid var(--text);
 }
