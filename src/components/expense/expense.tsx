@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./expense.css"
 import "../../App.css"
+import { useUser } from "../../hooks/useUser";
 
 interface Expense {
     id: number;
@@ -8,7 +9,8 @@ interface Expense {
     amount: number;
 };
 
-export function Expenses({ userName, setUserName }: { userName: string; setUserName: (name: string) => void }) {
+export function Expenses() {
+    const {userName, setUserName} = useUser();
     const [expenses, setExpenses] = useState<Expense[]>([
         {
             id: 1,

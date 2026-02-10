@@ -2,6 +2,7 @@ import "../../App.css"
 import "./income.css"
 import "../../assets/react.svg"
 import { useState } from "react"
+import { useUser } from "../../hooks/useUser"
 
 interface Paycheque {
   employerName: string,
@@ -14,7 +15,8 @@ interface Month {
   paycheques: Paycheque[]
 }
 
-function Income({ userName, setUserName }: { userName: string; setUserName: (name: string) => void }) {
+function Income() {
+  const {userName, setUserName} = useUser();
   const samplePaycheques: Paycheque[] = [
     {
       employerName: "Unity Technologies",

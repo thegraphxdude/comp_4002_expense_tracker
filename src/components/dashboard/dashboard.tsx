@@ -3,6 +3,7 @@ import BudgetTracker from "./budget-tracker";
 import { useState } from "react";
 import type { BudgetGoals } from "../../../src/types/budgetGoals";
 import type { FormEvent } from "react"
+import { useUser } from "../../hooks/useUser";
 
 interface Transaction {
   id: number;
@@ -24,7 +25,8 @@ const testTransactions: Transaction[] = [
 
 
 
-function Dashboard({ userName, setUserName }: { userName: string; setUserName: (name: string) => void }) {
+function Dashboard() {
+    const {userName, setUserName} = useUser();
     const [budgetGoals, setBudgetGoals] = useState<BudgetGoals>({
         monthlySpendingLimit: 0,
         monthlySavingGoal: 0,
